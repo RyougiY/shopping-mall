@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-api/naruse-shopping-cart-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-api/naruse-shopping-cms-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-api/naruse-shopping-dictionary-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-api/naruse-shopping-oms-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-api/naruse-shopping-pay-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-api/naruse-shopping-pms-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-api/naruse-shopping-sms-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-api/naruse-shopping-ums-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-application/naruse-shopping-manager-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-application/naruse-shopping-portal-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-common/naruse-shopping-mall-common-base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-common/naruse-shopping-mall-common-util/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-generator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-job/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-service/naruse-shopping-cart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-service/naruse-shopping-cms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-service/naruse-shopping-dictionary/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-service/naruse-shopping-oms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-service/naruse-shopping-pay/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-service/naruse-shopping-pms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-service/naruse-shopping-sms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/naruse-shopping-mall-service/naruse-shopping-ums/src/main/java" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="naruse-shopping-mall-common-util" />
+        <module name="naruse-shopping-pms-api" />
+        <module name="naruse-shopping-pay" />
+        <module name="naruse-shopping-cms" />
+        <module name="naruse-shopping-cms-api" />
+        <module name="naruse-shopping-portal-web" />
+        <module name="naruse-shopping-ums-api" />
+        <module name="naruse-shopping-dictionary-api" />
+        <module name="naruse-shopping-pay-api" />
+        <module name="naruse-shopping-manager-web" />
+        <module name="naruse-shopping-sms-api" />
+        <module name="naruse-shopping-dictionary" />
+        <module name="naruse-shopping-mall-generator" />
+        <module name="naruse-shopping-mall-job" />
+        <module name="naruse-shopping-sms" />
+        <module name="naruse-shopping-ums" />
+        <module name="naruse-shopping-mall-common-base" />
+        <module name="naruse-shopping-oms" />
+        <module name="naruse-shopping-oms-api" />
+        <module name="naruse-shopping-pms" />
+        <module name="naruse-shopping-cart" />
+        <module name="naruse-shopping-cart-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="naruse-shopping-application" target="1.8" />
+      <module name="naruse-shopping-job" target="1.8" />
+      <module name="naruse-shopping-mall-manager-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="naruse-shopping-cart" options="-parameters" />
+      <module name="naruse-shopping-cart-api" options="-parameters" />
+      <module name="naruse-shopping-cms" options="-parameters" />
+      <module name="naruse-shopping-cms-api" options="-parameters" />
+      <module name="naruse-shopping-dictionary" options="-parameters" />
+      <module name="naruse-shopping-dictionary-api" options="-parameters" />
+      <module name="naruse-shopping-mall-common-base" options="-parameters" />
+      <module name="naruse-shopping-mall-common-util" options="-parameters" />
+      <module name="naruse-shopping-mall-generator" options="-parameters" />
+      <module name="naruse-shopping-mall-job" options="-parameters" />
+      <module name="naruse-shopping-manager-web" options="-parameters" />
+      <module name="naruse-shopping-oms" options="-parameters" />
+      <module name="naruse-shopping-oms-api" options="-parameters" />
+      <module name="naruse-shopping-pay" options="-parameters" />
+      <module name="naruse-shopping-pay-api" options="-parameters" />
+      <module name="naruse-shopping-pms" options="-parameters" />
+      <module name="naruse-shopping-pms-api" options="-parameters" />
+      <module name="naruse-shopping-portal-web" options="-parameters" />
+      <module name="naruse-shopping-sms" options="-parameters" />
+      <module name="naruse-shopping-sms-api" options="-parameters" />
+      <module name="naruse-shopping-ums" options="-parameters" />
+      <module name="naruse-shopping-ums-api" options="-parameters" />
+    </option>
+  </component>
+</project>
