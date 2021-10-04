@@ -2,6 +2,8 @@ package com.naruse.shopping.ums.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.naruse.shopping.ums.entity.UmsMember;
+import com.naruse.shopping.ums.entity.dto.UmsMemberLoginParamDTO;
+import com.naruse.shopping.ums.entity.dto.UmsMemberRegisterParamDTO;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
  */
 public interface UmsMemberService extends IService<UmsMember> {
 
-    String register();
+    String register(UmsMemberRegisterParamDTO umsMemberRegisterParamDTO);
 
+    String login(UmsMemberLoginParamDTO umsMemberLoginParamDTO);
 }
