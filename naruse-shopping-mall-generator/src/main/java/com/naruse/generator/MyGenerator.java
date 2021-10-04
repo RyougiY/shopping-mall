@@ -47,7 +47,7 @@ public class MyGenerator {
         // 包设置
         PackageConfig pc = new PackageConfig();
 
-        pc.setParent("com.naruse.shoppingUms");
+        pc.setParent("com.naruse.shopping.ums");
         pc.setEntity("entity");
         pc.setMapper("mapper");
         pc.setController("controller");
@@ -63,8 +63,8 @@ public class MyGenerator {
         strategy.setLogicDeleteFieldName("deleted");
 
         // 自动填充
-        TableFill gmtCreate = new TableFill("create_time", FieldFill.INSERT);
-        TableFill gmtModify = new TableFill("update_time",FieldFill.INSERT_UPDATE);
+        TableFill gmtCreate = new TableFill("gmt_create", FieldFill.INSERT);
+        TableFill gmtModify = new TableFill("gmt_modified",FieldFill.INSERT_UPDATE);
         ArrayList<TableFill> tableFills = new ArrayList<TableFill>();
         tableFills.add(gmtCreate);
         tableFills.add(gmtModify);
