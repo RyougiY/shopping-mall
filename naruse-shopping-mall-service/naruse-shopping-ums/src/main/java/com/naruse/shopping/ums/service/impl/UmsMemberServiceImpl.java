@@ -33,7 +33,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
     public String register(UmsMemberRegisterParamDTO umsMemberRegisterParamDTO) {
         long count = umsMemberMapper.countUmsMemberByUsername(umsMemberRegisterParamDTO.getUsername());
         if (count > 0) {
-            return "用户名重复！无法注册！";
+            throw new RuntimeException("用户名重复！无法注册！");
         }
         UmsMember umsMember = new UmsMember();
         //将DTO转换成entity
@@ -52,7 +52,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
         UmsMember umsMember = umsMemberMapper.selectByUsername(umsMemberLoginParamDTO.getUsername());
         if (ObjectUtils.isEmpty(umsMember) ||
                 (!passwordEncoder.matches(umsMemberLoginParamDTO.getPassword(), umsMember.getPassword()))) {
-            return "用户名或密码错误！";
+            throw new RuntimeException("用户名或密码错误！");
         }
 
         return "Welcome to shopping mall! ";
