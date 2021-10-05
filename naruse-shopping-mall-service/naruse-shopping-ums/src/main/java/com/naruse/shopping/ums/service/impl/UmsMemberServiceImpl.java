@@ -1,9 +1,13 @@
 package com.naruse.shopping.ums.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.naruse.shopping.common.base.result.ResultObject;
+import com.naruse.shopping.common.util.util.JwtUtil;
 import com.naruse.shopping.ums.entity.UmsMember;
 import com.naruse.shopping.ums.entity.dto.UmsMemberLoginParamDTO;
 import com.naruse.shopping.ums.entity.dto.UmsMemberRegisterParamDTO;
+import com.naruse.shopping.ums.entity.dto.UmsMemberUpdateParamDTO;
+import com.naruse.shopping.ums.entity.response.UserMemberLoginResponse;
 import com.naruse.shopping.ums.mapper.UmsMemberMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.naruse.shopping.ums.service.UmsMemberService;
@@ -30,7 +34,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public String register(UmsMemberRegisterParamDTO umsMemberRegisterParamDTO) {
+    public ResultObject register(UmsMemberRegisterParamDTO umsMemberRegisterParamDTO) {
         long count = umsMemberMapper.countUmsMemberByUsername(umsMemberRegisterParamDTO.getUsername());
         if (count > 0) {
             throw new RuntimeException("用户名重复！无法注册！");
@@ -44,17 +48,39 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
         umsMember.setPassword(encode);
 
         umsMemberMapper.insert(umsMember);
-        return "success!";
+        return ResultObject.getSuccessBuilder().build();
     }
 
     @Override
-    public String login(UmsMemberLoginParamDTO umsMemberLoginParamDTO) {
+    public ResultObject login(UmsMemberLoginParamDTO umsMemberLoginParamDTO) {
         UmsMember umsMember = umsMemberMapper.selectByUsername(umsMemberLoginParamDTO.getUsername());
         if (ObjectUtils.isEmpty(umsMember) ||
                 (!passwordEncoder.matches(umsMemberLoginParamDTO.getPassword(), umsMember.getPassword()))) {
             throw new RuntimeException("用户名或密码错误！");
         }
 
-        return "Welcome to shopping mall! ";
+        String token = JwtUtil.createToken(umsMemberLoginParamDTO.getUsername());
+        UserMemberLoginResponse userMemberLoginResponse = new UserMemberLoginResponse();
+        userMemberLoginResponse.setToken(token);
+        userMemberLoginResponse.setUmsMember(umsMember);
+
+        return ResultObject.getSuccessBuilder().data(userMemberLoginResponse).build();
+    }
+
+    @Override
+    public ResultObject updateUserMember(UmsMemberUpdateParamDTO umsMemberUpdateParamDTO) {
+        UmsMember umsMember = umsMemberMapper.selectById(umsMemberUpdateParamDTO.getId());
+        if (ObjectUtils.isEmpty(umsMember) || !umsMember.getStatus()) {
+            throw new RuntimeException("系统中没有该用户！无法更新信息");
+        }
+
+        BeanUtils.copyProperties(umsMemberUpdateParamDTO, umsMember);
+
+        String encode = passwordEncoder.encode(umsMember.getPassword());
+        umsMember.setPassword(encode);
+
+        umsMemberMapper.updateById(umsMember);
+
+        return ResultObject.getSuccessBuilder().data(umsMember).build();
     }
 }

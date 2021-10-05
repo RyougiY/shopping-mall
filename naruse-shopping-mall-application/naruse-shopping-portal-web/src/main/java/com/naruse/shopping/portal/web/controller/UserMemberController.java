@@ -1,8 +1,10 @@
 package com.naruse.shopping.portal.web.controller;
 
+import com.naruse.shopping.common.base.annotations.TokenVerify;
 import com.naruse.shopping.common.base.result.ResultObject;
 import com.naruse.shopping.ums.entity.dto.UmsMemberLoginParamDTO;
 import com.naruse.shopping.ums.entity.dto.UmsMemberRegisterParamDTO;
+import com.naruse.shopping.ums.entity.dto.UmsMemberUpdateParamDTO;
 import com.naruse.shopping.ums.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +24,17 @@ public class UserMemberController {
 
     @PostMapping("/register")
     public ResultObject register(@RequestBody @Valid UmsMemberRegisterParamDTO umsMemberRegisterParamDTO) {
-        String resultStr = umsMemberService.register(umsMemberRegisterParamDTO);
-        return ResultObject.getSuccessBuilder().data(resultStr).build();
+        return umsMemberService.register(umsMemberRegisterParamDTO);
     }
 
     @PostMapping("/login")
     public ResultObject login(@RequestBody @Valid UmsMemberLoginParamDTO umsMemberLoginParamDTO) {
-        String resultStr = umsMemberService.login(umsMemberLoginParamDTO);
-        return ResultObject.getSuccessBuilder().data(resultStr).build();
+        return umsMemberService.login(umsMemberLoginParamDTO);
+    }
+
+    @PostMapping("/updateUserMember")
+    @TokenVerify
+    public ResultObject updateUserMember(@RequestBody @Valid UmsMemberUpdateParamDTO umsMemberUpdateParamDTO) {
+        return umsMemberService.updateUserMember(umsMemberUpdateParamDTO);
     }
 }

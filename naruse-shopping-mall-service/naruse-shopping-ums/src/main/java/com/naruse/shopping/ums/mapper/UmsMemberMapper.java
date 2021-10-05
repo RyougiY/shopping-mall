@@ -16,5 +16,10 @@ import org.springframework.stereotype.Repository;
 public interface UmsMemberMapper extends BaseMapper<UmsMember> {
     long countUmsMemberByUsername(String username);
 
+    /**
+     * 根据用户名查找 用户名和密码
+     * @param username
+     * @return
+     */
     UmsMember selectByUsername(String username);
 }
