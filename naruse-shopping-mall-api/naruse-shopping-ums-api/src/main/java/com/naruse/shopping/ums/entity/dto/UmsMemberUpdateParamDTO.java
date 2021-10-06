@@ -26,6 +26,9 @@ public class UmsMemberUpdateParamDTO {
      */
     private String password;
 
+    /** 新密码 **/
+    private String newPassword;
+
     /**
      * 头像
      */

@@ -1,4 +1,4 @@
-package com.naruse.shopping.portal.web.controller;
+package com.naruse.shopping.portal.web.controller.captchaStudying;
 
 import com.ramostear.captcha.HappyCaptcha;
 import com.wf.captcha.SpecCaptcha;

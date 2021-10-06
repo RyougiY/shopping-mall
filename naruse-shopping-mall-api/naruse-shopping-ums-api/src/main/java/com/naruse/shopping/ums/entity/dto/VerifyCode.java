@@ -1,4 +1,4 @@
-package com.naruse.shopping.portal.web.code;
+package com.naruse.shopping.ums.entity.dto;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,6 +17,14 @@ public class VerifyCode {
     private Color bgColor  = new Color(255, 255, 255);
     // 验证码上的文本
     private String text ;  //用于保存图片上的文字
+
+    private static final VerifyCode verifyCode = new VerifyCode();
+
+    public static VerifyCode getInstance() {
+        return verifyCode;
+    }
+
+    private VerifyCode() {}
 
     // 生成随机的颜色
     private Color randomColor () {
@@ -79,7 +87,7 @@ public class VerifyCode {
             g2.setColor(randomColor()); //设置随机颜色
             g2.drawString(s, x, h-5); //画图
         }
-        this.text = sb.toString(); //把生成的字符串赋给了this.text
+        this.text = sb.toString().toLowerCase(); //把生成的字符串赋给了this.text
         drawLine(image); //添加干扰线
         return image;
     }

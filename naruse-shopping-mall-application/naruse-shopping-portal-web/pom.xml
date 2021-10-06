@@ -28,6 +28,12 @@
 <!--            <groupId>com.octo.captcha</groupId>-->
 <!--            <artifactId>jcaptcha</artifactId>-->
 <!--            <version>1.0</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.jhlabs</groupId>-->
+<!--                    <artifactId>imaging</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
 <!--        </dependency>-->
 
         <dependency>
@@ -40,6 +46,12 @@
             <groupId>com.github.whvcse</groupId>
             <artifactId>easy-captcha</artifactId>
             <version>1.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>kaptcha-spring-boot-starter</artifactId>
+            <version>1.1.0</version>
         </dependency>
     </dependencies>
 

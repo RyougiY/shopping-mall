@@ -7,6 +7,10 @@ import com.naruse.shopping.ums.entity.dto.UmsMemberLoginParamDTO;
 import com.naruse.shopping.ums.entity.dto.UmsMemberRegisterParamDTO;
 import com.naruse.shopping.ums.entity.dto.UmsMemberUpdateParamDTO;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.Map;
+
 /**
  * <p>
  *  服务类
@@ -19,7 +23,11 @@ public interface UmsMemberService extends IService<UmsMember> {
 
     ResultObject register(UmsMemberRegisterParamDTO umsMemberRegisterParamDTO);
 
-    ResultObject login(UmsMemberLoginParamDTO umsMemberLoginParamDTO);
+    ResultObject login(UmsMemberLoginParamDTO umsMemberLoginParamDTO, HttpServletRequest request);
 
     ResultObject updateUserMember(UmsMemberUpdateParamDTO umsMemberUpdateParamDTO);
+
+    Map<String, String> generateCode(HttpServletRequest request) throws IOException;
+
+    ResultObject verify(String uuid, String verifyCode);
 }

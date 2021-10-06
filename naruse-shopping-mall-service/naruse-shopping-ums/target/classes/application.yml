@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: yan1210calvin
-    url: jdbc:mysql://192.168.80.130:3306/naruse-shopping-mall?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.3.128:3306/naruse-shopping-mall?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
   profiles:
     active: dev

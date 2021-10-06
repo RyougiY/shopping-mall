@@ -1,4 +1,4 @@
-package com.naruse.shopping.portal.web.controller;
+package com.naruse.shopping.portal.web.controller.captchaStudying;
 
 import com.ramostear.captcha.HappyCaptcha;
 import com.ramostear.captcha.support.CaptchaType;
@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 验证码框架
+ * 保存到session中的验证码
+ */
 @RestController
 @RequestMapping("/happy-captcha")
 public class HappyCaptchaController {
