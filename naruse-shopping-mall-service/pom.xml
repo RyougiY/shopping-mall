@@ -21,7 +21,6 @@
         <module>naruse-shopping-dictionary</module>
         <module>naruse-shopping-sms</module>
         <module>naruse-shopping-cms</module>
-        <module>naruse-shopping-cart</module>
     </modules>
 
     <properties>

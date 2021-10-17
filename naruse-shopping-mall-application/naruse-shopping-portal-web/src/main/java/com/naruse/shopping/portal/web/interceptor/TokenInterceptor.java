@@ -1,6 +1,7 @@
 package com.naruse.shopping.portal.web.interceptor;
 
 import com.naruse.shopping.common.base.annotations.TokenVerify;
+import com.naruse.shopping.common.base.exceptions.ShoppingMallServerException;
 import com.naruse.shopping.common.util.util.JwtUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.method.HandlerMethod;
@@ -38,7 +39,7 @@ public class TokenInterceptor implements HandlerInterceptor {
                 try {
                     JwtUtil.parseToken(token);
                 }catch (Exception e) {
-                    throw new RuntimeException("token异常！请检查token！");
+                    throw new ShoppingMallServerException("token异常！请检查token！");
                 }
                 return true;
             }

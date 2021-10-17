@@ -4,7 +4,8 @@ import com.baomidou.kaptcha.exception.KaptchaException;
 import com.baomidou.kaptcha.exception.KaptchaIncorrectException;
 import com.baomidou.kaptcha.exception.KaptchaNotFoundException;
 import com.baomidou.kaptcha.exception.KaptchaTimeoutException;
-import com.naruse.shopping.common.base.exceptions.ShoppingMallException;
+import com.naruse.shopping.common.base.exceptions.ShoppingMallBusinessException;
+import com.naruse.shopping.common.base.exceptions.ShoppingMallServerException;
 import com.naruse.shopping.common.base.result.ResultObject;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -17,8 +18,13 @@ public class GlobalExceptionHandler {
         return ResultObject.getFailedBuilder().msg("算术错误！").build();
     }
 
-    @ExceptionHandler(ShoppingMallException.class)
-    public ResultObject globalException(ShoppingMallException exception) {
+    @ExceptionHandler(ShoppingMallBusinessException.class)
+    public ResultObject globalException(ShoppingMallBusinessException exception) {
+        return ResultObject.getFailedBuilder().msg(exception.getMessage()).build();
+    }
+
+    @ExceptionHandler(ShoppingMallServerException.class)
+    public ResultObject serverException(ShoppingMallServerException exception) {
         return ResultObject.getFailedBuilder().msg(exception.getMessage()).build();
     }
 

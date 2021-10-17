@@ -2,7 +2,7 @@ package com.naruse.shopping.ums.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.naruse.shopping.common.base.constant.UserMemberConstant;
-import com.naruse.shopping.common.base.exceptions.ShoppingMallException;
+import com.naruse.shopping.common.base.exceptions.ShoppingMallBusinessException;
 import com.naruse.shopping.common.base.result.ResultObject;
 import com.naruse.shopping.common.util.util.JwtUtil;
 import com.naruse.shopping.ums.entity.UmsMember;
@@ -52,7 +52,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
     public ResultObject register(UmsMemberRegisterParamDTO umsMemberRegisterParamDTO) {
         long count = umsMemberMapper.countUmsMemberByUsername(umsMemberRegisterParamDTO.getUsername());
         if (count > 0) {
-            throw new ShoppingMallException("用户名重复！无法注册！");
+            throw new ShoppingMallBusinessException("用户名重复！无法注册！");
         }
         UmsMember umsMember = new UmsMember();
         //将DTO转换成entity
@@ -69,12 +69,12 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
     @Override
     public ResultObject login(UmsMemberLoginParamDTO umsMemberLoginParamDTO, HttpServletRequest request) {
         if (stringRedisTemplate.opsForValue().get(UserMemberConstant.LOGIN_RESTRICT_PREFIX + request.getRemoteAddr()) != null) {
-            throw new ShoppingMallException("输入密码错误达上限！10分钟内无法在当前设备登录");
+            throw new ShoppingMallBusinessException("输入密码错误达上限！10分钟内无法在当前设备登录");
         }
 
         UmsMember umsMember = umsMemberMapper.selectByUsername(umsMemberLoginParamDTO.getUsername());
         if (ObjectUtils.isEmpty(umsMember)) {
-            throw new ShoppingMallException("该用户不存在！");
+            throw new ShoppingMallBusinessException("该用户不存在！");
         }
 
         stringRedisTemplate.opsForValue().setIfAbsent(UserMemberConstant.LOGIN_FAILED_COUNT + umsMember.getUsername(), "0");
@@ -88,10 +88,10 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
             if ((5-count) == 0) {
                 stringRedisTemplate.delete(UserMemberConstant.LOGIN_FAILED_COUNT + umsMember.getUsername());
                 stringRedisTemplate.opsForValue().set(UserMemberConstant.LOGIN_RESTRICT_PREFIX + request.getRemoteAddr(), "1", 10, TimeUnit.MINUTES);
-                throw new ShoppingMallException("输入密码错误达上限！10分钟内无法在当前设备登录");
+                throw new ShoppingMallBusinessException("输入密码错误达上限！10分钟内无法在当前设备登录");
             }
 
-            throw new ShoppingMallException("密码输入错误！还剩下" + (5 - count) + "次机会");
+            throw new ShoppingMallBusinessException("密码输入错误！还剩下" + (5 - count) + "次机会");
         }
 
         //密码输入正确，返回token
@@ -108,7 +108,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
     public ResultObject updateUserMember(UmsMemberUpdateParamDTO umsMemberUpdateParamDTO) {
         UmsMember umsMember = umsMemberMapper.selectById(umsMemberUpdateParamDTO.getId());
         if (ObjectUtils.isEmpty(umsMember) || !umsMember.getStatus()) {
-            throw new ShoppingMallException("系统中没有该用户！无法更新信息");
+            throw new ShoppingMallBusinessException("系统中没有该用户！无法更新信息");
         }
 
         BeanUtils.copyProperties(umsMemberUpdateParamDTO, umsMember);
@@ -143,7 +143,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
         String codeCount = stringRedisTemplate.opsForValue().get(UserMemberConstant.CODE_RESTRICT_PREFIX + remoteAddr);
 
         if (StringUtils.isNotBlank(codeCount) && Integer.parseInt(codeCount) >= 1) {
-            throw new ShoppingMallException("1分钟之内只能发送一次验证码");
+            throw new ShoppingMallBusinessException("1分钟之内只能发送一次验证码");
         }
 
         stringRedisTemplate.opsForValue()
